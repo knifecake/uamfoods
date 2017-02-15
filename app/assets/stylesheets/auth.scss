@@ -1,4 +1,5 @@
-$unauthenticated-bg: $gray-dark;
+$unauthenticated-bg: $brand-primary;
+$shadow-color: darken($unauthenticated-bg, 30%);
 
 body.unauthenticated {
   background-color: $unauthenticated-bg;
@@ -7,7 +8,7 @@ body.unauthenticated {
 .signin-wrapper {
   max-width: 350px;
   margin: 4rem auto;
-  box-shadow: 0 0 50px black;
+  box-shadow: 0 0 50px $shadow-color; 
 }
 
 .panel-heading {
@@ -19,8 +20,8 @@ body.unauthenticated {
   font-weight: bold;
   font-size: 5rem;
 
-  color: rgba(0, 0, 0, 0.3);
-  text-shadow: 1px 4px 6px $unauthenticated-bg, 0 0 0 #000, 1px 4px 6px
+  color: transparentize($shadow-color, 0.7);
+  text-shadow: 1px 4px 6px $unauthenticated-bg, 0 0 0 $shadow-color, 1px 4px 6px
   $unauthenticated-bg;
 
   &::selection {

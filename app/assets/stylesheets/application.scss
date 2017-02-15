@@ -1,6 +1,10 @@
 $grid-gutter-width: 15px;
 $navbar-height: 40px;
 
+$brand-primary: #cb231f;
+$navbar-default-bg: $brand-primary;
+$navbar-default-link-color: white;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -8,3 +12,30 @@ $navbar-height: 40px;
 @import "font-awesome";
 
 @import "auth";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin-top: $navbar-height + $grid-gutter-width;
+}
+
+.panel {
+  margin-bottom: $grid-gutter-width;
+}
+
+table {
+  @extend .table, .table-condensed, .table-hover;
+}
+
+label {
+  @extend .control-label;
+}
+
+footer {
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid $gray-lighter;
+  color: $gray-light;
+}
