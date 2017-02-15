@@ -1,0 +1,10 @@
+$grid-gutter-width: 15px;
+$navbar-height: 40px;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "auth";
