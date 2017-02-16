@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215221743) do
+ActiveRecord::Schema.define(version: 20170216102255) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -37,40 +37,14 @@ ActiveRecord::Schema.define(version: 20170215221743) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "cafeteria", force: :cascade do |t|
+  create_table "cafeterias", force: :cascade do |t|
     t.string   "name"
-    t.string   "hours"
     t.string   "location"
+    t.string   "hours"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "dish_menus", force: :cascade do |t|
-    t.integer  "dish_id"
-    t.integer  "menu_id"
-    t.string   "course_type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["dish_id"], name: "index_dish_menus_on_dish_id"
-    t.index ["menu_id"], name: "index_dish_menus_on_menu_id"
-  end
-
-  create_table "dishes", force: :cascade do |t|
-    t.integer  "cafeterium_id"
-    t.string   "name"
-    t.integer  "price"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["cafeterium_id"], name: "index_dishes_on_cafeterium_id"
-  end
-
-  create_table "menus", force: :cascade do |t|
-    t.integer  "cafeterium_id"
-    t.datetime "served_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["cafeterium_id"], name: "index_menus_on_cafeterium_id"
+    t.boolean  "needs_mentor"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

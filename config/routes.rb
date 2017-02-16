@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'home/welcome'
+      get 'home/welcome'
+  end
+
+  scope '/admin' do
+    resources :cafeterias
   end
 
   root to: 'admin/home#welcome'

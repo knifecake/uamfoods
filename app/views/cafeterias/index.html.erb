@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cafeterias</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Hours</th>
+      <th>Phone</th>
+      <th>Needs mentor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cafeterias.each do |cafeteria| %>
+      <tr>
+        <td><%= cafeteria.name %></td>
+        <td><%= cafeteria.location %></td>
+        <td><%= cafeteria.hours %></td>
+        <td><%= cafeteria.phone %></td>
+        <td><%= cafeteria.needs_mentor %></td>
+        <td><%= link_to 'Show', cafeteria %></td>
+        <td><%= link_to 'Edit', edit_cafeteria_path(cafeteria) %></td>
+        <td><%= link_to 'Destroy', cafeteria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cafeteria', new_cafeteria_path %>
