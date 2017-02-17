@@ -1,6 +1,11 @@
-<h1>Editing Cafeteria</h1>
-
-<%= render 'form', cafeteria: @cafeteria %>
-
-<%= link_to 'Show', @cafeteria %> |
-<%= link_to 'Back', cafeterias_path %>
+<% content_for :main do %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Editar cafetería
+    <%= link_to 'Cancelar', cafeterias_path, class: 'pull-right' %>
+  </div>
+  <div class="panel-body">
+    <%= render 'form', cafeteria: @cafeteria %>
+  </div>
+</div>
+<% end %>

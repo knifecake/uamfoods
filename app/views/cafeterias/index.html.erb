@@ -1,35 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Cafeterias</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Hours</th>
-      <th>Phone</th>
-      <th>Needs mentor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cafeterias.each do |cafeteria| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Cafeterías
+    <%= link_to '<i class="fa fa-plus"></i> Añadir cafetería'.html_safe, new_cafeteria_path, class: 'pull-right' %>
+  </div>
+  <table>
+    <thead>
       <tr>
-        <td><%= cafeteria.name %></td>
-        <td><%= cafeteria.location %></td>
-        <td><%= cafeteria.hours %></td>
-        <td><%= cafeteria.phone %></td>
-        <td><%= cafeteria.needs_mentor %></td>
-        <td><%= link_to 'Show', cafeteria %></td>
-        <td><%= link_to 'Edit', edit_cafeteria_path(cafeteria) %></td>
-        <td><%= link_to 'Destroy', cafeteria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nombre</th>
+        <th>Ubicación</th>
+        <th>Horario</th>
+        <th>Teléfono</th>
+        <th>Mentor?</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Cafeteria', new_cafeteria_path %>
+    <tbody>
+      <% @cafeterias.each do |cafeteria| %>
+        <tr>
+          <td><%= link_to cafeteria.name, cafeteria %></td>
+          <td><%= cafeteria.location %></td>
+          <td><%= cafeteria.hours %></td>
+          <td><%= cafeteria.phone %></td>
+          <td><%= not cafeteria.needs_mentor %></td>
+          <td><%= link_to 'Ver', cafeteria %></td>
+          <td><%= link_to 'Editar', edit_cafeteria_path(cafeteria) %></td>
+          <td><%= link_to 'Borrar', cafeteria, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

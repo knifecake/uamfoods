@@ -1,29 +1,49 @@
-<p id="notice"><%= notice %></p>
+<% content_for :main do %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @cafeteria.name %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Cafetería</div>
+  <div class="panel-body">
+    <p>
+      <strong>Nombre:</strong>
+      <%= @cafeteria.name %>
+    </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @cafeteria.location %>
-</p>
+    <p>
+      <strong>Ubicación:</strong>
+      <%= @cafeteria.location %>
+    </p>
 
-<p>
-  <strong>Hours:</strong>
-  <%= @cafeteria.hours %>
-</p>
+    <p>
+      <strong>Horario:</strong>
+      <%= @cafeteria.hours %>
+    </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @cafeteria.phone %>
-</p>
+    <p>
+      <strong>Teléfono:</strong>
+      <%= @cafeteria.phone %>
+    </p>
 
-<p>
-  <strong>Needs mentor:</strong>
-  <%= @cafeteria.needs_mentor %>
-</p>
+    <p>
+      <strong>Necesita mentor?</strong>
+      <%= @cafeteria.needs_mentor %>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_cafeteria_path(@cafeteria) %> |
-<%= link_to 'Back', cafeterias_path %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class="list-group">
+  <%= link_to 'Editar', edit_cafeteria_path(@cafeteria), class: 'list-group-item' %>
+  <%= link_to 'Volver', cafeterias_path, class: 'list-group-item' %>
+  <%= link_to 'Borrar', @cafeteria, method: :delete, class: 'list-group-item list-group-item-danger', data: { confirm: 'Estás seguro?' } %>
+  </div>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Próximos menús
+    <%= link_to '<i class="fa fa-plus"></i> Añadir menú'.html_safe, new_cafeteria_menu_path(@cafeteria), class: 'btn btn-primary btn-xs pull-right' %>
+  </div>
+  <%= render '/menus/list', menus: @cafeteria.menus %>
+</div>
+
