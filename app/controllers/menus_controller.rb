@@ -1,5 +1,6 @@
 class MenusController < AdminController
-  before_action :set_menu, only: [:show, :edit, :update, :destroy, :link_dish]
+  before_action :set_cafeteria, except: [:edit]
+  before_action :set_menu, only: [:show, :update, :destroy]
 
   # GET /menus
   # GET /menus.json
@@ -19,16 +20,18 @@ class MenusController < AdminController
 
   # GET /menus/1/edit
   def edit
+    @cafeteria = Cafeteria.includes(:dishes).find(params[:cafeteria_id])
+    @menu = @cafeteria.menus.includes(:dishes).find(params[:id])
   end
 
   # POST /menus
   # POST /menus.json
   def create
-    @menu = Menu.new(menu_params.merge({cafeteria_id: params[:cafeteria_id]}))
+    @menu = @cafeteria.menus.new
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to cafeteria_menus_url(@menu.cafeteria), notice: 'Menu was successfully created.' }
+        format.html { redirect_to cafeteria_menus_url(@cafeteria), notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class MenusController < AdminController
   def update
     respond_to do |format|
       if @menu.update(menu_params)
-        format.html { redirect_to cafeteria_url(@menu.cafeteria), notice: 'Menu was successfully updated.' }
+        format.html { redirect_to cafeteria_url(@cafeteria), notice: 'Menu was successfully updated.' }
         format.json { render :show, status: :ok, location: @menu }
       else
         format.html { render :edit }
@@ -56,32 +59,18 @@ class MenusController < AdminController
   def destroy
     @menu.destroy
     respond_to do |format|
-      format.html { redirect_to cafeteria_url(@menu.cafeteria), notice: 'Menu was successfully destroyed.' }
+      format.html { redirect_to cafeteria_url(@cafeteria), notice: 'Menu was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  def link_dish
-    if params[:dish][:name]
-      @menu.create_or_link_dish(params[:dish][:name])
-      respond_to do |f|
-        f.html { redirect_to edit_cafeteria_menu_url(@menu.cafeteria, @menu), notice: 'Se añadió el plato al menú.' }
-        # TODO: JSON
-      end
-    else
-      respond_to do |f|
-        f.html { redirect_to edit_cafeteria_menu_url(@menu.cafeteria, @menu), error: 'No se pudo añadir el plato.' }
-      end
-    end
-  end
-
-  def unlink_dish
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def set_cafeteria
+      @cafeteria = Cafeteria.find(params[:cafeteria_id])
+    end
+
     def set_menu
-    @menu = Menu.find_by(id: params[:id], cafeteria_id: params[:cafeteria_id])
+      @menu = @cafeteria.menus.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

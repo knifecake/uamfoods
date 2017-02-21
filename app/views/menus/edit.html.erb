@@ -16,16 +16,18 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Nombre</th>
+        <th>Orden</th>
         <th colspan="3"></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @menu.dishes.each do |dish| %>
+      <% @menu.dish_menus.each do |dish_menu| %>
         <tr>
-          <td><%= dish.name %></td>
-          <td><%= link_to 'Destroy', '#', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= dish_menu.dish.name %></td>
+          <td><%= dish_menu.course %></td>
+          <td><%= link_to 'Destroy', cafeteria_menu_dish_menu_path(dish_menu.menu.cafeteria, dish_menu.menu, dish_menu), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -36,6 +38,17 @@
     </div>
   <% end %>
   <div class="panel-footer">
+      <%= render '/dish_menus/form', menu: @menu, dish_menu: @menu.dish_menus.new %>
+  </div>
+</div>
+
+<% content_for :sidebar do %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      Crear un plato
+  </div>
+  <div class="panel-body">
     <%= render '/dishes/form', menu: @menu, dish: @menu.dishes.new %>
   </div>
 </div>
+<% end %>

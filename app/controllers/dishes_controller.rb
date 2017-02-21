@@ -1,17 +1,18 @@
 class DishesController < AdminController
   before_action :set_dish, only: :destroy
+  before_action :set_cafeteria, only: :create
 
   # POST /dishes
   # POST /dishes.json
   def create
-    @dish = Dish.new(dish_params)
+    @dish = @cafeteria.dishes.new(dish_params)
 
     respond_to do |format|
       if @dish.save
-        format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
+        format.html { redirect_to @cafeteria, notice: 'Dish was successfully created.' }
         format.json { render :show, status: :created, location: @dish }
       else
-        format.html { render :new }
+        format.html { redirect_to @cafeteria, alert: 'Could not create dish' }
         format.json { render json: @dish.errors, status: :unprocessable_entity }
       end
     end
@@ -31,6 +32,10 @@ class DishesController < AdminController
     # Use callbacks to share common setup or constraints between actions.
     def set_dish
       @dish = Dish.find(params[:id])
+    end
+
+    def set_cafeteria
+      @cafeteria = Cafeteria.find(params[:cafeteria_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

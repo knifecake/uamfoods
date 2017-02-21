@@ -7,10 +7,7 @@ Rails.application.routes.draw do
     resources :cafeterias do
       resources :dishes, only: [:create, :destroy]
       resources :menus do
-        member do
-          post 'link_dish', action: :link_dish
-          delete 'unlink_dish/:dish_id', action: :unlink_dish
-        end
+        resources :dish_menus, only: [:create, :destroy]
       end
     end
   end

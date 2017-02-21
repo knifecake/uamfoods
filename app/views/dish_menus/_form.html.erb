@@ -1,0 +1,9 @@
+<%= simple_form_for(dish_menu, url: cafeteria_menu_dish_menus_path(menu.cafeteria, menu), html: {class: 'form-inline'}) do |f| %>
+  <div class="row">
+      <%= f.association :dish, collection: menu.cafeteria.dishes, label: false, input_html: {style: 'width: 100%'}, wrapper_html: {class: 'col-sm-6'}, prompt: 'Selecciona un plato...' %>
+      <%= f.input :course, collection: ['primero', 'segundo', 'postre'], selected: 'primero', wrapper_html: {class: 'col-sm-3'}, label: false %>
+      <div class="col-sm-3">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
+  </div>
+<% end %>
