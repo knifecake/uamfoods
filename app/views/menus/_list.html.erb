@@ -12,7 +12,6 @@
       <tr>
         <td><%= menu.served_at %></td>
         <td><%= menu.meal %></td>
-        <td><%= link_to 'Ver', cafeteria_menu_path(menu.cafeteria, menu) %></td>
         <td><%= link_to 'Editar', edit_cafeteria_menu_path(menu.cafeteria, menu) %></td>
         <td><%= link_to 'Eliminar', cafeteria_menu_path(menu.cafeteria, menu), method: :delete, data: { confirm: 'Estás seguro?' } %></td>
       </tr>

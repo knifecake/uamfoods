@@ -2,17 +2,6 @@ class MenusController < AdminController
   before_action :set_cafeteria, except: [:edit]
   before_action :set_menu, only: [:show, :update, :destroy]
 
-  # GET /menus
-  # GET /menus.json
-  def index
-    @menus = Menu.where(cafeteria_id: params[:cafeteria_id])
-  end
-
-  # GET /menus/1
-  # GET /menus/1.json
-  def show
-  end
-
   # GET /menus/new
   def new
     @menu = Menu.new(cafeteria: Cafeteria.find(params[:cafeteria_id]))
@@ -27,11 +16,11 @@ class MenusController < AdminController
   # POST /menus
   # POST /menus.json
   def create
-    @menu = @cafeteria.menus.new
+    @menu = @cafeteria.menus.new(menu_params)
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to cafeteria_menus_url(@cafeteria), notice: 'Menu was successfully created.' }
+        format.html { redirect_to edit_cafeteria_menu_url(@cafeteria, @menu), notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }

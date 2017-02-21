@@ -1,4 +1,7 @@
 $(document).on "turbolinks:load", ->
+  $('.select2').select2
+    theme: 'bootstrap'
+
   $.rails.allowAction = (link) ->
     return true unless link.attr('data-confirm')
     $.rails.showConfirmDialog(link)

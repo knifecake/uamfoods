@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
-  namespace :admin do
-      get 'home/welcome'
-  end
-
   scope '/admin' do
     resources :cafeterias do
       resources :dishes, only: [:create, :destroy]
-      resources :menus do
+      resources :menus, except: [:index, :show] do
         resources :dish_menus, only: [:create, :destroy]
       end
     end
   end
 
-  root to: 'admin/home#welcome'
+  root to: 'cafeterias#index'
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
