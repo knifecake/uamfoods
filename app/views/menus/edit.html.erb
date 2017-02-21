@@ -1,0 +1,41 @@
+<% content_for :main do %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Editar menu en <%= @menu.cafeteria.name %>
+    <%= link_to 'Cancelar', cafeteria_path(@menu.cafeteria), class: 'pull-right' %>
+  </div>
+  <div class="panel-body">
+    <%= render 'form', menu: @menu, url: cafeteria_menu_path(@menu.cafeteria, @menu) %>
+  </div>
+</div>
+<% end %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">Platos</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @menu.dishes.each do |dish| %>
+        <tr>
+          <td><%= dish.name %></td>
+          <td><%= link_to 'Destroy', '#', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if @menu.dishes.empty? %>
+    <div class="panel-body text-center">
+      No hay platos en este menú.
+    </div>
+  <% end %>
+  <div class="panel-footer">
+    <%= render '/dishes/form', menu: @menu, dish: @menu.dishes.new %>
+  </div>
+</div>

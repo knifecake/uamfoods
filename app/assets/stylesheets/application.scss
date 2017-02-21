@@ -1,12 +1,18 @@
 $grid-gutter-width: 15px;
-$navbar-height: 40px;
-
 $brand-primary: #cb231f;
+
+$navbar-height: 40px;
 $navbar-default-bg: $brand-primary;
 $navbar-default-link-color: white;
+$navbar-default-link-active-color: white;
+
+$table-bg-hover: transparentize(#fee98d, 0.7);
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+@import "select2";
+@import "select2-bootstrap";
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -23,10 +29,19 @@ body {
 
 .panel {
   margin-bottom: $grid-gutter-width;
+  font-size: $font-size-small;
+
+  a:not(.btn) {
+    font-weight: normal;
+    &:hover {
+      text-decoration: none;
+      color: $gray-dark;
+    }
+  }
 }
 
 table {
-  @extend .table, .table-condensed, .table-hover;
+  @extend .table, .table-hover;
 }
 
 label {

@@ -1,0 +1,17 @@
+<%= simple_form_for(menu, url: url, html: {class: 'form-horizontal'}, wrapper: :horizontal_form) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :served_at, as: :string %>
+    <%= f.input :meal, collection: ['comida', 'cena'], selected: 'comida' %>
+  </div>
+
+
+  <div class="form-actions">
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<%= simple_form_for(dish, url: link_dish_cafeteria_menu_path(menu.cafeteria, menu), html: {class: 'form-inline'}) do |f| %>
+  <div class="row">
+    <%= f.input :name, label: false, wrapper_html: {class: 'col-sm-6'}, input_html: {style: 'width: 100%'}, placeholder: 'Escribe el nombre de un plato...' %>
+    <div class="form-group col-sm-6">
+      <%= f.button :submit, 'Añadir plato', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

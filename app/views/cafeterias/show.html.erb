@@ -34,9 +34,9 @@
 
 <% content_for :sidebar do %>
   <div class="list-group">
-  <%= link_to 'Editar', edit_cafeteria_path(@cafeteria), class: 'list-group-item' %>
-  <%= link_to 'Volver', cafeterias_path, class: 'list-group-item' %>
-  <%= link_to 'Borrar', @cafeteria, method: :delete, class: 'list-group-item list-group-item-danger', data: { confirm: 'Estás seguro?' } %>
+    <%= link_to '<i class="fa fa-arrow-left"></i> Volver'.html_safe, cafeterias_path, class: 'list-group-item' %>
+    <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_cafeteria_path(@cafeteria), class: 'list-group-item' %>
+    <%= link_to '<i class="fa fa-trash"></i> Borrar'.html_safe, @cafeteria, method: :delete, class: 'list-group-item list-group-item-danger', data: { confirm: 'Estás seguro?' } %>
   </div>
 <% end %>
 

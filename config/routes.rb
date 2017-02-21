@@ -4,7 +4,15 @@ Rails.application.routes.draw do
   end
 
   scope '/admin' do
-    resources :cafeterias
+    resources :cafeterias do
+      resources :dishes, only: [:create, :destroy]
+      resources :menus do
+        member do
+          post 'link_dish', action: :link_dish
+          delete 'unlink_dish/:dish_id', action: :unlink_dish
+        end
+      end
+    end
   end
 
   root to: 'admin/home#welcome'
