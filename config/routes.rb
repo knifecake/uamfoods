@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cafeterias/:id', to: 'public_cafeterias#show', as: :public_cafeteria
+
   scope '/admin' do
     resources :cafeterias do
       resources :dishes, only: [:create, :destroy]
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'cafeterias#index'
+  root to: 'public_cafeterias#index'
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',

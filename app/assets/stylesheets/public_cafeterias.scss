@@ -1,0 +1,9 @@
+// Place all the styles related to the PublicCafeterias controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.menu-listing {
+  @extend .bg-warning;
+  border-radius: $border-radius-base;
+  padding: 0.7rem;
+  border: 1px solid $alert-warning-border;
+}

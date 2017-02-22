@@ -1,0 +1,12 @@
+<h1>Cafeterías de la UAM</h1>
+<% @cafeterias.each do |c| %>
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading"><%= link_to c.name, public_cafeteria_path(c) %></h4>
+    <p>
+      Horario: <%= c.hours %><br>
+      Teléfono: <%= c.phone %>
+    </p>
+  </div>
+</div>
+<% end %>
