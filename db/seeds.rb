@@ -9,7 +9,7 @@ User.create(name: 'Elias Hernandis', email: 'eliashernandis@gmail.com', password
 
 
 Cafeteria.delete_all
-c = Cafeteria.create(name: 'Cafetería Politécnica', location: 'Escuela Politécnica Superior, callo Francisco Tomás y Valiente 11, 28049 Madrid', phone: '+34 914 97 22 26', hours: 'de lunes a viernes, de 8h a 20h')
+c = Cafeteria.create(name: 'Cafetería Politécnica', location: 'Escuela Politécnica Superior, callo Francisco Tomás y Valiente 11, 28049 Madrid', phone: '+34 914 97 22 26', hours: 'de lunes a viernes, de 8h a 20h', image_url: 'http://atvs.ii.uam.es/logo-eps.png')
 
 
 Dish.delete_all
@@ -24,3 +24,4 @@ m = c.menus.create(served_at: 1.day.from_now, meal: 'comida')
 m.dish_menus.create(dish: d1, course: 'primero')
 m.dish_menus.create(dish: d2, course: 'segundo')
 
+DishVote.delete_all
