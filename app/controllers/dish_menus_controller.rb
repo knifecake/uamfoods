@@ -1,4 +1,4 @@
-class DishMenusController < ApplicationController
+class DishMenusController < AdminController
   before_action :set_dish_menu, only: [:destroy]
   # POST /dish_menus
   # POST /dish_menus.json
@@ -8,7 +8,7 @@ class DishMenusController < ApplicationController
 
     respond_to do |format|
       if @dish_menu.save
-        format.html { redirect_to edit_cafeteria_menu_url(@menu.cafeteria, @menu), notice: 'Dish menu was successfully created.' }
+        format.html { redirect_to edit_cafeteria_menu_url(@menu.cafeteria, @menu), notice: 'El plato se añadió correctamente.' }
         format.json { render :show, status: :created, location: @dish_menu }
       else
         format.html { redirect_to edit_cafeteria_menu_url(@menu.cafeteria, @menu), alert: 'No se pudo crear el menú' }
@@ -22,7 +22,7 @@ class DishMenusController < ApplicationController
   def destroy
     @dish_menu.destroy
     respond_to do |format|
-      format.html { redirect_to edit_cafeteria_menu_path(@dish_menu.menu.cafeteria, @dish_menu.menu), notice: 'Dish menu was successfully destroyed.' }
+      format.html { redirect_to edit_cafeteria_menu_path(@dish_menu.menu.cafeteria, @dish_menu.menu), notice: 'El plato se eliminó del menú.' }
       format.json { head :no_content }
     end
   end

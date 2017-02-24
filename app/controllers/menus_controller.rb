@@ -20,7 +20,7 @@ class MenusController < AdminController
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to edit_cafeteria_menu_url(@cafeteria, @menu), notice: 'Menu was successfully created.' }
+        format.html { redirect_to edit_cafeteria_menu_url(@cafeteria, @menu), notice: 'El menú se ha creado.' }
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class MenusController < AdminController
   def update
     respond_to do |format|
       if @menu.update(menu_params)
-        format.html { redirect_to cafeteria_url(@cafeteria), notice: 'Menu was successfully updated.' }
+        format.html { redirect_to cafeteria_url(@cafeteria), notice: 'El menú se ha actualizado.' }
         format.json { render :show, status: :ok, location: @menu }
       else
         format.html { render :edit }
@@ -48,7 +48,7 @@ class MenusController < AdminController
   def destroy
     @menu.destroy
     respond_to do |format|
-      format.html { redirect_to cafeteria_url(@cafeteria), notice: 'Menu was successfully destroyed.' }
+      format.html { redirect_to cafeteria_url(@cafeteria), notice: 'El menú se ha eliminado.' }
       format.json { head :no_content }
     end
   end

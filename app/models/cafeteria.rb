@@ -1,6 +1,7 @@
 class Cafeteria < ApplicationRecord
   validates :name, presence: true
   validates :location, presence: true
+  validates :hours, presence: true
 
   has_many :menus
   has_many :dishes

@@ -3,7 +3,7 @@
       <%= f.association :dish, collection: menu.cafeteria.dishes, label: false, input_html: {class: 'select2', style: 'width: 100%'}, wrapper_html: {class: 'col-sm-6'}, prompt: 'Selecciona un plato...' %>
       <%= f.input :course, collection: ['primero', 'segundo', 'postre'], selected: 'primero', wrapper_html: {class: 'col-sm-3'}, label: false %>
       <div class="col-sm-3">
-        <%= f.button :submit, class: 'btn btn-primary' %>
+        <%= f.button :submit, 'Añadir plato', class: 'btn btn-primary' %>
       </div>
   </div>
 <% end %>

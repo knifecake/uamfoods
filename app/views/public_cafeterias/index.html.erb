@@ -7,6 +7,9 @@
       Horario: <%= c.hours %><br>
       Teléfono: <%= c.phone %>
     </p>
+    <% if current_admin %>
+      <%= link_to 'edit', cafeteria_path(c) %>
+    <% end %>
   </div>
 </div>
 <% end %>

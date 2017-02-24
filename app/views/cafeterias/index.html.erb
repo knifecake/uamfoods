@@ -10,7 +10,7 @@
         <th>Horario</th>
         <th>Teléfono</th>
         <th>Mentor?</th>
-        <th colspan="3"></th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
@@ -21,7 +21,8 @@
           <td><%= cafeteria.hours %></td>
           <td><%= cafeteria.phone %></td>
           <td><%= not cafeteria.needs_mentor %></td>
-          <td><%= link_to 'Ver', cafeteria %></td>
+          <td><%= link_to 'Ver', public_cafeteria_path(cafeteria) %></td>
+          <td><%= link_to 'Detalle', cafeteria %></td>
           <td><%= link_to 'Editar', edit_cafeteria_path(cafeteria) %></td>
           <td><%= link_to 'Borrar', cafeteria, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
         </tr>

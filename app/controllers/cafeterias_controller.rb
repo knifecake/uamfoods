@@ -28,7 +28,7 @@ class CafeteriasController < AdminController
 
     respond_to do |format|
       if @cafeteria.save
-        format.html { redirect_to @cafeteria, notice: 'Cafeteria was successfully created.' }
+        format.html { redirect_to @cafeteria, notice: 'La cafetería se ha creado.' }
         format.json { render :show, status: :created, location: @cafeteria }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CafeteriasController < AdminController
   def update
     respond_to do |format|
       if @cafeteria.update(cafeteria_params)
-        format.html { redirect_to @cafeteria, notice: 'Cafeteria was successfully updated.' }
+        format.html { redirect_to @cafeteria, notice: 'La cafetería se ha actualizado.' }
         format.json { render :show, status: :ok, location: @cafeteria }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CafeteriasController < AdminController
   def destroy
     @cafeteria.destroy
     respond_to do |format|
-      format.html { redirect_to cafeterias_url, notice: 'Cafeteria was successfully destroyed.' }
+      format.html { redirect_to cafeterias_url, notice: 'La cafetería se ha eliminado.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class CafeteriasController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cafeteria_params
-      params.require(:cafeteria).permit(:name, :location, :hours, :phone, :needs_mentor)
+      params.require(:cafeteria).permit(:name, :image_url, :location, :hours, :phone, :needs_mentor)
     end
 end

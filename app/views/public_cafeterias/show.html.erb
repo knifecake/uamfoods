@@ -8,7 +8,9 @@
         </div>
       </div>
       <div class="media-body">
-        <i class="fa fa-calendar"></i> <%= l m.served_at, format: :long %><br>
+        <i class="fa fa-calendar"></i> <%= l m.served_at, format: :menu %> (<%= m.meal %>)
+        <%= link_to 'editar', edit_cafeteria_menu_path(@cafeteria, m) if current_admin %>
+        <br>
         <b>de primero:</b> <i><%= m.dish_menus.where(course: 'primero').map {|d| d.dish.name }.join(', ') %></i><br>
         <b>de segundo:</b> <i><%= m.dish_menus.where(course: 'segundo').map {|d| d.dish.name }.join(', ') %></i><br>
         <b>de postre:</b> <i><%= m.dish_menus.where(course: 'postre').map {|d| d.dish.name }.join(', ') %></i>
@@ -19,12 +21,13 @@
 
 <% content_for :sidebar do %>
   <h2><%= @cafeteria.name %></h2>
-  <img style="margin-bottom: 1rem;" src="http://atvs.ii.uam.es/logo-eps.png" class="img-thumbnail">
+  <img style="margin-bottom: 1rem;" src="<%= @cafeteria.image_url %>" class="img-thumbnail">
   <% unless @cafeteria.needs_mentor %>
     <p class="alert alert-warning">Esta cafetería no tiene a nadie que nos mande los menús según se publican. ¡Ese podrías ser tú! <%= link_to 'Escríbenos', 'mailto:eliashernandis@gmail.com' %> con una foto del menú semanal y lo añadiremos.</p>
   <% end %>
   <p>
     <b><i class="fa fa-clock-o"></i> <%= @cafeteria.hours %></b>
+    <%= link_to 'editar', edit_cafeteria_path(@cafeteria) if current_admin %>
     <address><%= @cafeteria.location %><br><abbr title="Teléfono">TLF:</abbr> <%= @cafeteria.phone %></address>
   </p>
   <p class="text-muted">¿Ves algún problema? <%= link_to 'Ayúdanos', 'mailto:eliashernandis@gmail.com' %></p>
