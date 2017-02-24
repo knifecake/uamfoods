@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'dishes/:id/upvote', to: 'votes#upvote', as: :dish_upvote
+  post 'dishes/:id/downvote', to: 'votes#downvote', as: :dish_downvote
+
   get 'cafeterias/:id', to: 'public_cafeterias#show', as: :public_cafeteria
 
   scope '/admin' do
@@ -11,6 +14,13 @@ Rails.application.routes.draw do
   end
 
   root to: 'public_cafeterias#index'
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    confirmations: 'users/confirmations',
+    unlocks: 'users/unlocks',
+    passwords: 'users/passwords'
+  }
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',

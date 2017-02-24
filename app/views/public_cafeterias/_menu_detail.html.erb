@@ -1,0 +1,12 @@
+
+<ul class="list-unstyled">
+  <% dish_menus.each do |c| %>
+    <li>
+      <%= link_to '<i class="fa fa-minus"></i> '.html_safe, dish_downvote_path(c.dish), class: 'btn-downvote' %>
+      <var class="vote-count"><%= c.dish.score %></var>
+      <%= link_to '<i class="fa fa-plus"></i> '.html_safe, dish_upvote_path(c.dish), class: 'btn-upvote' %>
+      &nbsp;&nbsp;&nbsp;
+      <%= c.dish.name %>
+    </li>
+  <% end %>
+</ul>

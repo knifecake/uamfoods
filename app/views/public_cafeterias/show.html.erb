@@ -2,7 +2,7 @@
   <h2>Menús para esta semana</h2>
   <% @cafeteria.this_weeks_menus.each do |m| %>
     <div class="media menu-listing">
-      <div class="text-center media-left media-middle">
+      <div class="hidden-xs text-center media-left media-middle">
         <div style="padding: 0.5rem; margin: 0 0.5rem;">
           <b style="font-size: 6rem; line-height: 1"><%= m.served_at.day %></b>
         </div>
@@ -11,9 +11,21 @@
         <i class="fa fa-calendar"></i> <%= l m.served_at, format: :menu %> (<%= m.meal %>)
         <%= link_to 'editar', edit_cafeteria_menu_path(@cafeteria, m) if current_admin %>
         <br>
-        <b>de primero:</b> <i><%= m.dish_menus.where(course: 'primero').map {|d| d.dish.name }.join(', ') %></i><br>
-        <b>de segundo:</b> <i><%= m.dish_menus.where(course: 'segundo').map {|d| d.dish.name }.join(', ') %></i><br>
-        <b>de postre:</b> <i><%= m.dish_menus.where(course: 'postre').map {|d| d.dish.name }.join(', ') %></i>
+        <div class="dish-teaser">
+          <b>de primero:</b> <i><%= m.dish_menus.first_courses.map {|d| d.dish.name }.join(', ') %></i><br>
+          <b>de segundo:</b> <i><%= m.dish_menus.second_courses.where(course: 'segundo').map {|d| d.dish.name }.join(', ') %></i><br>
+          <b>de postre:</b> <i><%= m.dish_menus.desserts.where(course: 'postre').map {|d| d.dish.name }.join(', ') %></i>
+        </div>
+        <div class="dish-detail" style="display: none;">
+          <b>de primero:</b>
+          <%= render 'menu_detail', dish_menus: m.dish_menus.first_courses %>
+
+          <b>de segundo:</b>
+          <%= render 'menu_detail', dish_menus: m.dish_menus.second_courses %>
+
+          <b>de postre:</b>
+          <%= render 'menu_detail', dish_menus: m.dish_menus.desserts %>
+        </div>
       </div>
     </div>
   <% end %>

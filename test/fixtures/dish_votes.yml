@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dish: one
+  user: one
+  voted_at: 2017-02-24 15:03:07
+
+two:
+  dish: two
+  user: two
+  voted_at: 2017-02-24 15:03:07
