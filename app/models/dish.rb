@@ -7,6 +7,8 @@ class Dish < ApplicationRecord
   validates :cafeteria, presence: true
   validates :name, presence: true
 
+  after_initialize :set_defaults
+
   def upvotes
     dish_votes.where(value: 1).count
   end
@@ -15,15 +17,26 @@ class Dish < ApplicationRecord
     dish_votes.where(value: -1).count
   end
 
-  def score
-    upvotes - downvotes
-  end
-
   def upvote!(user)
-    dish_votes.create(user: user, value: 1)
+    r = dish_votes.new(user: user, value: 1)
+    if r.save
+      self.score += 1
+      self.save
+    end
+    return r
   end
 
   def downvote!(user)
-    dish_votes.create(user: user, value: -1)
+    r = dish_votes.new(user: user, value: -1)
+    if r.save
+      self.score += -1
+      self.save
+    end
+    return r
   end
+
+  private
+    def set_defaults
+      self.score ||= 0
+    end
 end
