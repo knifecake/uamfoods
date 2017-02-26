@@ -22,6 +22,12 @@ es:
         password: Nueva contraseña
         password_confirmation: Confirmar contraseña
         current_password: Contraseña actual
+      user:
+        name: Nombre
+        email: Email
+        password: Nueva contraseña
+        password_confirmation: Confirmar contraseña
+        current_password: Contraseña actual
       cafeteria:
         name: Nombre
         image_url: URL imagen
