@@ -75,7 +75,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # devise
-  config.action_mailer.default_url_options = { host: 'uamfoods.ga', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'uamfoods.ga', port: 80 }
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
