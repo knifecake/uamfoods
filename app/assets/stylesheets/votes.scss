@@ -1,0 +1,7 @@
+.btn-upvote {
+  color: green;
+
+  &:hover {
+    color: darken(green, 10%);
+  }
+}

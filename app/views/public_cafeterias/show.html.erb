@@ -11,12 +11,7 @@
         <i class="fa fa-calendar"></i> <%= l m.served_at, format: :menu %> (<%= m.meal %>)
         <%= link_to 'editar', edit_cafeteria_menu_path(@cafeteria, m) if current_admin %>
         <br>
-        <div class="dish-teaser">
-          <b>de primero:</b> <i><%= m.dish_menus.first_courses.map {|d| d.dish.name }.join(', ') %></i><br>
-          <b>de segundo:</b> <i><%= m.dish_menus.second_courses.where(course: 'segundo').map {|d| d.dish.name }.join(', ') %></i><br>
-          <b>de postre:</b> <i><%= m.dish_menus.desserts.where(course: 'postre').map {|d| d.dish.name }.join(', ') %></i>
-        </div>
-        <div class="dish-detail" style="display: none;">
+        <div class="dish-detail">
           <b>de primero:</b>
           <%= render 'menu_detail', dish_menus: m.dish_menus.first_courses %>
 

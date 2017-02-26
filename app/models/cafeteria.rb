@@ -7,8 +7,8 @@ class Cafeteria < ApplicationRecord
   has_many :dishes
 
   def this_weeks_menus
-    mon = DateTime.now - DateTime.now.wday
+    mon = DateTime.now
     sun = 1.week.from_now
-    return menus.includes(:dishes).where(served_at: mon..sun)
+    return menus.includes(:dishes).order(:served_at).where(served_at: mon..sun)
   end
 end

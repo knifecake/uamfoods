@@ -1,6 +1,11 @@
-<h1>Cafeterías de la UAM</h1>
+<h1>Cafeterías @ UAM</h1>
 <% @cafeterias.each do |c| %>
 <div class="media">
+  <div class="media-left media-middle">
+    <a href="<%= public_cafeteria_path(c) %>">
+      <img style="max-width: 64px" class="media-object" src="<%= c.image_url %>" alt="<%= c.name %>">
+    </a>
+  </div>
   <div class="media-body">
     <h4 class="media-heading"><%= link_to c.name, public_cafeteria_path(c) %></h4>
     <p>

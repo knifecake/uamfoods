@@ -5,6 +5,9 @@ $navbar-height: 40px;
 $navbar-default-bg: $brand-primary;
 $navbar-default-link-color: white;
 $navbar-default-link-active-color: white;
+$navbar-default-toggle-border-color: white;
+$navbar-default-toggle-icon-bar-bg: $navbar-default-toggle-border-color;
+$navbar-default-toggle-hover-bg: transparent;
 
 $table-bg-hover: transparentize(#fee98d, 0.7);
 
@@ -19,6 +22,7 @@ $table-bg-hover: transparentize(#fee98d, 0.7);
 
 @import "auth";
 @import "public_cafeterias";
+@import "votes";
 
 html, body {
   height: 100%;

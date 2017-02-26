@@ -9,34 +9,37 @@ class Dish < ApplicationRecord
 
   after_initialize :set_defaults
 
-  def upvotes
-    dish_votes.where(value: 1).count
-  end
-
-  def downvotes
-    dish_votes.where(value: -1).count
+  def score
+    upvotes - downvotes
   end
 
   def upvote!(user)
-    r = dish_votes.new(user: user, value: 1)
-    if r.save
-      self.score += 1
-      self.save
+    if (downvoted_by? user)
+      dish_votes.find_by(user: user, value: -1).destroy
+    else
+      dish_votes.create(user: user, value: 1)
     end
-    return r
   end
 
   def downvote!(user)
-    r = dish_votes.new(user: user, value: -1)
-    if r.save
-      self.score += -1
-      self.save
+    if upvoted_by?(user)
+      dish_votes.find_by(user: user, value: 1).destroy
+    else
+      dish_votes.create(user: user, value: -1)
     end
-    return r
+  end
+
+  def upvoted_by?(user)
+    dish_votes.where(user: user, value: 1).count == 1
+  end
+
+  def downvoted_by?(user)
+    dish_votes.where(user: user, value: -1).count == 1
   end
 
   private
     def set_defaults
-      self.score ||= 0
+      self.upvotes ||= 0
+      self.downvotes ||= 0
     end
 end

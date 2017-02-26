@@ -4,20 +4,18 @@ class VotesController < ApplicationController
 
 
   def upvote
-    vote = @dish.upvote!(current_user)
-    if vote.persisted?
-      render json: @dish.score, status: :created
+    if @dish.upvote!(current_user)
+      render json: @dish, status: :created
     else
-      render json: vote.errors, status: :unprocessable_entity
+      render head: :unprocessable_entity
     end
   end
 
   def downvote
-    vote = @dish.downvote!(current_user)
-    if vote.persisted?
-      render json: @dish.score, status: :created
+    if @dish.downvote!(current_user)
+      render json: @dish, status: :created
     else
-      render json: vote.errors, status: :unprocessable_entity
+      render head: :unprocessable_entity
     end
   end
 
