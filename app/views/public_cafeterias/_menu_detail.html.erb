@@ -1,6 +1,6 @@
 
 <ul class="list-unstyled">
-  <% dish_menus.includes(:dish).each do |c| %>
+  <% dish_menus.each do |c| %>
     <li>
       <%= link_to '<i class="fa fa-lg fa-thumbs-up"></i> '.html_safe, dish_upvote_path(c.dish), class: 'btn-upvote' %>
       <var class="upvote-count"><%= c.dish.upvotes %></var> /
