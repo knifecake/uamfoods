@@ -1,15 +1,15 @@
 
 <ul class="list-unstyled">
-  <% dish_menus.each do |c| %>
+  <% dish_menus.includes(:dish).each do |c| %>
     <li>
-      <% if c.dish.downvoted_by?(current_user)%>
+      <% if current_user and current_user.has_downvoted?(c.dish) %>
         <%= link_to '<i class="fa fa-lg fa-thumbs-down"></i> '.html_safe, dish_downvote_path(c.dish), class: 'btn-downvote voted' %>
       <% else %>
         <%= link_to '<i class="fa fa-lg fa-thumbs-down"></i> '.html_safe, dish_downvote_path(c.dish), class: 'btn-downvote' %>
       <% end %>
       <var class="downvote-count"><%= c.dish.downvotes %></var> / 
       <var class="upvote-count"><%= c.dish.upvotes %></var>
-      <% if c.dish.upvoted_by?(current_user) %>
+      <% if current_user and current_user.has_upvoted?(c.dish) %>
         <%= link_to '<i class="fa fa-lg fa-thumbs-up voted"></i> '.html_safe, dish_upvote_path(c.dish), class: 'btn-upvote voted' %>
       <% else %>
         <%= link_to '<i class="fa fa-lg fa-thumbs-up"></i> '.html_safe, dish_upvote_path(c.dish), class: 'btn-upvote' %>
