@@ -71,8 +71,10 @@
       <%= yield %>
 
       <footer>
-        <p class="pull-left">Made by Elias Hernandis in 2017. This project is open source under the MIT License.</p>
-        <p class="pull-right"><%= link_to 'admin', cafeterias_path %>
+        <p class="pull-left">Made by <a href="https://hernandis.me/">Elias Hernandis</a> in 2017. Code on <a href="https://github.com/knifecake/uamfoods"><i class="fa fa-github"></i> GitHub</a></p>
+        <% if current_admin %>
+          <p class="pull-right"><%= link_to 'admin', cafeterias_path %>
+        <% end %>
       </footer>
     </div>
   </body>

@@ -78,6 +78,7 @@ es:
     - viernes
     - sábado
     formats:
+      weekday: "%A"
       menu: "%A, %d de %B"
       default: "%d/%m/%Y"
       long: "%d de %B de %Y"

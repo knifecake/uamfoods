@@ -5,9 +5,11 @@
       <div class="hidden-xs text-center media-left media-middle">
         <div style="padding: 0.5rem; margin: 0 0.5rem;">
           <b style="font-size: 6rem; line-height: 1"><%= m.served_at.day %></b>
+          <br><%= l m.served_at, format: :weekday %>
         </div>
       </div>
       <div class="media-body">
+        <%= '<span class="label label-primary">Hoy</span>'.html_safe if m.served_at == Date.today %>
         <i class="fa fa-calendar"></i> <%= l m.served_at, format: :menu %> (<%= m.meal %>)
         <%= link_to 'editar', edit_cafeteria_menu_path(@cafeteria, m) if current_admin %>
         <br>
