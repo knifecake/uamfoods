@@ -7,10 +7,10 @@ class DishMenu < ApplicationRecord
   end
 
   def self.second_courses
-    where(course: 'segundo')
+    includes(:dish).where(course: 'segundo')
   end
 
   def self.desserts
-    where(course: 'postre')
+    includes(:dish).where(course: 'postre')
   end
 end

@@ -15,17 +15,17 @@ class Dish < ApplicationRecord
 
   def upvote!(user)
     if (downvoted_by? user)
-      dish_votes.find_by(user: user, value: -1).destroy
+      dish_votes.find_by(user: user, value: -1).destroy ? :done : :fail
     else
-      dish_votes.create(user: user, value: 1)
+      dish_votes.create(user: user, value: 1).persisted? ? :done : :fail
     end
   end
 
   def downvote!(user)
     if upvoted_by?(user)
-      dish_votes.find_by(user: user, value: 1).destroy
+      dish_votes.find_by(user: user, value: 1).destroy ? :done : :fail
     else
-      dish_votes.create(user: user, value: -1)
+      dish_votes.create(user: user, value: -1).persisted? ? :done : :fail
     end
   end
 

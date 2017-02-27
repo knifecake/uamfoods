@@ -4,18 +4,18 @@ class VotesController < ApplicationController
 
 
   def upvote
-    if @dish.upvote!(current_user)
+    if @dish.upvote!(current_user) == :done
       render json: @dish, status: :created
     else
-      render head: :unprocessable_entity
+      render json: {errors: 'Ya has votado este plato.'}, status: :unprocessable_entity
     end
   end
 
   def downvote
-    if @dish.downvote!(current_user)
+    if @dish.downvote!(current_user) == :done
       render json: @dish, status: :created
     else
-      render head: :unprocessable_entity
+      render json: {errors: 'Ya has votado este plato.'}, status: :unprocessable_entity
     end
   end
 
