@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
 
 gem 'simple_form'
 gem 'bootstrap-sass'

@@ -1,14 +1,26 @@
 $unauthenticated-bg: $brand-primary;
+$admin-auth-bg: $gray-darker;
 $shadow-color: darken($unauthenticated-bg, 30%);
+$admin-shadow-color: darken($admin-auth-bg, 30%);
 
 body.unauthenticated {
   background-color: $unauthenticated-bg;
+}
+
+body.unauthenticated.admin {
+  background-color: $admin-auth-bg;
 }
 
 .signin-wrapper {
   max-width: 350px;
   margin: 4rem auto;
   box-shadow: 0 0 50px $shadow-color; 
+}
+
+.admin .signin-wrapper {
+  max-width: 350px;
+  margin: 4rem auto;
+  box-shadow: 0 0 50px $admin-shadow-color; 
 }
 
 .panel-heading {
@@ -23,6 +35,22 @@ body.unauthenticated {
   color: transparentize($shadow-color, 0.7);
   text-shadow: 1px 4px 6px $unauthenticated-bg, 0 0 0 $shadow-color, 1px 4px 6px
   $unauthenticated-bg;
+
+  &::selection {
+    text-shadow: none;
+    color: white;
+  }
+
+}
+
+.admin .signin-brand {
+  text-align: center;
+  font-weight: bold;
+  font-size: 5rem;
+
+  color: transparentize($admin-shadow-color, 0.7);
+  text-shadow: 1px 4px 6px $admin-auth-bg, 0 0 0 $admin-shadow-color, 1px 4px 6px
+  $admin-auth-bg;
 
   &::selection {
     text-shadow: none;
