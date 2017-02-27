@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post 'dishes/:id/upvote', to: 'votes#upvote', as: :dish_upvote
   post 'dishes/:id/downvote', to: 'votes#downvote', as: :dish_downvote
 
-  get 'cafeterias/:id', to: 'public_cafeterias#show', as: :public_cafeteria
+  get 'cafeterias/:slug', to: 'public_cafeterias#show', as: :public_cafeteria
 
   scope '/admin' do
     resources :cafeterias do

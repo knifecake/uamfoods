@@ -2,6 +2,9 @@
 es:
   activerecord:
     models:
+      user:
+        one: Usuario
+        other: Usuarios
       admin:
         one: Administrador
         other: Administradores

@@ -21,7 +21,7 @@
           <td><%= cafeteria.hours %></td>
           <td><%= cafeteria.phone %></td>
           <td><%= not cafeteria.needs_mentor %></td>
-          <td><%= link_to 'Ver', public_cafeteria_path(cafeteria) %></td>
+          <td><%= link_to 'Ver', public_cafeteria_path(slug: cafeteria.slug) %></td>
           <td><%= link_to 'Detalle', cafeteria %></td>
           <td><%= link_to 'Editar', edit_cafeteria_path(cafeteria) %></td>
           <td><%= link_to 'Borrar', cafeteria, method: :delete, data: { confirm: 'Estás seguro?' } %></td>

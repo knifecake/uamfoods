@@ -6,6 +6,6 @@ class PublicCafeteriasController < ApplicationController
   end
 
   def show
-    @cafeteria = Cafeteria.find(params[:id])
+    @cafeteria = Cafeteria.find_by(slug: params[:slug])
   end
 end

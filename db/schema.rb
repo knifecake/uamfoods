@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225170743) do
+ActiveRecord::Schema.define(version: 20170227163152) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20170225170743) do
     t.string   "image_url"
     t.string   "contributor_name"
     t.date     "last_contribution_date"
+    t.string   "slug"
+    t.index ["slug"], name: "index_cafeterias_on_slug"
   end
 
   create_table "dish_menus", force: :cascade do |t|

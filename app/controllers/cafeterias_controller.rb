@@ -69,6 +69,6 @@ class CafeteriasController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cafeteria_params
-      params.require(:cafeteria).permit(:name, :image_url, :location, :hours, :phone, :needs_mentor)
+      params.require(:cafeteria).permit(:name, :slug, :image_url, :location, :hours, :phone, :needs_mentor)
     end
 end
