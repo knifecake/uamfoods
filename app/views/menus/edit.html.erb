@@ -1,7 +1,7 @@
 <% content_for :main do %>
 <div class="panel panel-default">
   <div class="panel-heading">
-    Editar menu en <%= @menu.cafeteria.name %>
+    Editar menu en <%= link_to @menu.cafeteria.name, @menu.cafeteria %>
     <%= link_to 'Cancelar', cafeteria_path(@menu.cafeteria), class: 'pull-right' %>
   </div>
   <div class="panel-body">
@@ -51,4 +51,5 @@
     <%= render '/dishes/form', menu: @menu, dish: @menu.dishes.new %>
   </div>
 </div>
+<%= link_to '<i class="fa fa-plus"></i> Añadir menú'.html_safe, new_cafeteria_menu_path(@cafeteria), class: 'btn btn-primary' %>
 <% end %>

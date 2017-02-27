@@ -2,7 +2,13 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 Admin.delete_all
-Admin.create(name: 'Elias Hernandis', email: 'eliashernandis@gmail.com', password: 'helloworld', password_confirmation: 'helloworld').confirm
+if ENV['UF_ADMIN']
+  puts "New admin with string: " + ENV['UF_ADMIN']
+  name, email, password = ENV['UF_ADMIN'].split(':')
+  a = Admin.new(name: name, email: email, password: password, password_confirmation: password)
+  a.skip_confirmation!
+  a.save
+end
 
 User.delete_all
 User.create(name: 'Elias Hernandis', email: 'eliashernandis@gmail.com', password:'helloworld', password_confirmation: 'helloworld')
@@ -13,15 +19,38 @@ c = Cafeteria.create(name: 'Cafetería Politécnica', location: 'Escuela Polité
 
 
 Dish.delete_all
-d1 = c.dishes.create(name: 'Buffet de ensaladas')
-d2 = c.dishes.create(name: 'Pollo al limón')
-c.dishes.create(name: 'Arroz a la cubana')
-c.dishes.create(name: 'Escalope con patatas')
+c.dishes.create(name: 'Buffet de ensaladas')
+c.dishes.create(name: 'Arroz a la cubana con salchichas')
+c.dishes.create(name: 'Ensalada francesa')
+c.dishes.create(name: 'Crema de zanahorias')
+c.dishes.create(name: 'Croquetas y empanadillas')
+c.dishes.create(name: 'Lomo asado a la naranja')
+c.dishes.create(name: 'Merluza andaluza con patatas panaderas')
+c.dishes.create(name: 'Macarrones boloñesa')
+c.dishes.create(name: 'Judías verdes rehogadas')
+c.dishes.create(name: 'Salmorejo cordobés')
+c.dishes.create(name: 'Huevos fritos con morcilla y bacon')
+c.dishes.create(name: 'Pollo asado al limón')
+c.dishes.create(name: 'Pescado plancha')
+c.dishes.create(name: 'Lentejas estofadas')
+c.dishes.create(name: 'Espaguetis al ajillo')
+c.dishes.create(name: 'Acelgas extremeñas')
+c.dishes.create(name: 'Tosta de serrano con huevo')
+c.dishes.create(name: 'Soldaditos de pavia')
+c.dishes.create(name: 'Albóndigas riojana')
+c.dishes.create(name: 'Paella mixta')
+c.dishes.create(name: 'Patatas guisadas')
+c.dishes.create(name: 'Ensalada de pasta')
+c.dishes.create(name: 'Lasaña al horno')
+c.dishes.create(name: 'Bacaladitos')
+c.dishes.create(name: 'Tortilla española paisana')
+c.dishes.create(name: 'Olla de garbanzos')
+c.dishes.create(name: 'Tallarines italiana')
+c.dishes.create(name: 'Verduras al horno')
+c.dishes.create(name: 'Escalope de pollo')
+c.dishes.create(name: 'Revuelto de la casa')
+c.dishes.create(name: 'Varitas de merluza con salsa ali-oli')
 
 DishMenu.delete_all
 Menu.delete_all
-m = c.menus.create(served_at: 1.day.from_now, meal: 'comida')
-m.dish_menus.create(dish: d1, course: 'primero')
-m.dish_menus.create(dish: d2, course: 'segundo')
-
 DishVote.delete_all
