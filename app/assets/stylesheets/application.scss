@@ -45,6 +45,12 @@ body {
   }
 }
 
+.alert-dismissible.alert-fixed {
+  position: fixed;
+  z-index: 100;
+  margin: $grid-gutter-width;
+}
+
 table {
   @extend .table, .table-hover;
 }
