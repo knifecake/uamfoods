@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'cafeterias/:slug', to: 'public_cafeterias#show', as: :public_cafeteria
 
+  get '/admin', to: 'admin#dashboard'
+
   scope '/admin' do
     resources :cafeterias do
       resources :dishes, only: [:create, :destroy]

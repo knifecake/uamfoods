@@ -1,0 +1,10 @@
+<h2>Algunas estadísticas</h2>
+
+<div class="row">
+  <%= render 'stat-tile', datum: User.count, label: 'usuarios registrados' %>
+  <%= render 'stat-tile', datum: Dish.count, label: 'platos guardados' %>
+  <%= render 'stat-tile', datum: Menu.count, label: 'menús guardados' %>
+  <%= render 'stat-tile', datum: DishMenu.count / Menu.count, label: 'platos/menú' %>
+  <%= render 'stat-tile', datum: time_ago_in_words(User.order(:last_sign_in_at).first.last_sign_in_at), label: 'ultima actividad' %>
+  <%= render 'stat-tile', datum: Cafeteria.count, label: 'cafeterías registradas' %>
+</div>

@@ -52,6 +52,19 @@ body {
   right: 0;
 }
 
+.stat-tile {
+  text-align: center;
+  font-weight: bold;
+  font-size: 5rem;
+  @extend .panel, .panel-default;
+
+  p {
+    font-size: 1rem;
+    font-weight: normal;
+    color: $gray-light;
+  }
+}
+
 table {
   @extend .table, .table-hover;
 }
