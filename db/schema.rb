@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227165301) do
+ActiveRecord::Schema.define(version: 20170228103934) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -42,13 +42,13 @@ ActiveRecord::Schema.define(version: 20170227165301) do
     t.string   "location"
     t.string   "hours"
     t.string   "phone"
-    t.boolean  "needs_mentor"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "image_url"
     t.string   "contributor_name"
     t.date     "last_contribution_date"
     t.string   "slug"
+    t.string   "menu_price"
     t.index ["slug"], name: "index_cafeterias_on_slug"
   end
 

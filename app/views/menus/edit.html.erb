@@ -2,7 +2,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     Editar menu en <%= link_to @menu.cafeteria.name, @menu.cafeteria %>
-    <%= link_to 'Cancelar', cafeteria_path(@menu.cafeteria), class: 'pull-right' %>
+    <span class="pull-right">
+      <%= link_to 'Cancelar', cafeteria_path(@menu.cafeteria) %> |
+      <%= link_to 'Eliminar', cafeteria_menu_path(@menu.cafeteria, @menu), method: :delete, data: { confirm: 'Estás seguro?' } %>
+    </span>
   </div>
   <div class="panel-body">
     <%= render 'form', menu: @menu, url: cafeteria_menu_path(@menu.cafeteria, @menu) %>

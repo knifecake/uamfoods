@@ -8,9 +8,9 @@
   </thead>
 
   <tbody>
-    <% menus.each do |menu| %>
+    <% menus.order(served_at: :desc).each do |menu| %>
       <tr>
-        <td><%= menu.served_at %></td>
+        <td><%= l menu.served_at, format: :menu %></td>
         <td><%= menu.meal %></td>
         <td><%= link_to 'Editar', edit_cafeteria_menu_path(menu.cafeteria, menu) %></td>
         <td><%= link_to 'Eliminar', cafeteria_menu_path(menu.cafeteria, menu), method: :delete, data: { confirm: 'Estás seguro?' } %></td>

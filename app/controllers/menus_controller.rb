@@ -16,7 +16,12 @@ class MenusController < AdminController
   # POST /menus
   # POST /menus.json
   def create
-    @menu = @cafeteria.menus.new(menu_params)
+    if (params[:menu][:copy_from])
+      date = parse_copy_from_date(params[:menu][:copy_from], menu_params[:served_at])
+      @menu = @cafeteria.menus.new_copy_from(date, menu_params)
+    else
+      @menu = @cafeteria.menus.new(menu_params)
+    end
 
     respond_to do |format|
       if @menu.save
@@ -65,5 +70,21 @@ class MenusController < AdminController
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
       params.require(:menu).permit(:served_at, :meal)
+    end
+
+    def parse_copy_from_date(string, reference_date = nil)
+      if reference_date and reference_date != ""
+        reference_date = reference_date.to_date
+      else
+        reference_date = Date.today
+      end
+
+      if (string == 'el día anterior')
+        reference_date - 1.day
+      elsif (string == 'la semana anterior')
+        reference_date - 1.week
+      else
+        Date.today
+      end
     end
 end

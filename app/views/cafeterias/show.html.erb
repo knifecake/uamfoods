@@ -9,6 +9,11 @@
     </p>
 
     <p>
+      <strong>Precio del menú:</strong>
+      <%= @cafeteria.menu_price %>
+    </p>
+
+    <p>
       <strong>Ubicación:</strong>
       <%= @cafeteria.location %>
     </p>
@@ -24,8 +29,10 @@
     </p>
 
     <p>
-      <strong>Necesita mentor?</strong>
-      <%= @cafeteria.needs_mentor %>
+      <strong>Contribuyente:</strong>
+      <% if @cafeteria.contributor_name %>
+        <%= @cafeteria.contributor_name %> (<%= l @cafeteria.last_contribution_date %>)
+      <% end %>
     </p>
   </div>
 </div>
@@ -37,7 +44,7 @@
     <%= link_to '<i class="fa fa-arrow-left"></i> Volver'.html_safe, cafeterias_path, class: 'list-group-item' %>
     <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_cafeteria_path(@cafeteria), class: 'list-group-item' %>
     <%= link_to '<i class="fa fa-eye"></i> Ver'.html_safe, public_cafeteria_path(slug: @cafeteria.slug), class: 'list-group-item' %>
-    <%= link_to '<i class="fa fa-trash"></i> Borrar'.html_safe, @cafeteria, method: :delete, class: 'list-group-item list-group-item-danger', data: { confirm: 'Estás seguro?' } %>
+    <%= link_to '<i class="fa fa-trash"></i> Eliminar'.html_safe, @cafeteria, method: :delete, class: 'list-group-item list-group-item-danger', data: { confirm: 'Estás seguro?' } %>
   </div>
 <% end %>
 

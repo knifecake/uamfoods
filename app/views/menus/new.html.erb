@@ -1,6 +1,8 @@
 <div class="panel panel-default">
   <div class="panel-heading">Nuevo menu en <%= @menu.cafeteria.name %>
-  <%= link_to 'Cancelar', @menu.cafeteria, class: 'pull-right' %>
+  <span class="pull-right">
+    <%= link_to 'Cancelar', @menu.cafeteria %>
+  </span>
   </div>
   <div class="panel-body">
     <%= render 'form', menu: @menu, url: cafeteria_menus_path(@menu.cafeteria) %>

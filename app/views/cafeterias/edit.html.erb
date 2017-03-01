@@ -2,7 +2,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     Editar cafetería
-    <%= link_to 'Cancelar', cafeterias_path, class: 'pull-right' %>
+    <span class="pull-right">
+      <%= link_to 'Cancelar', cafeterias_path %> |
+      <%= link_to 'Eliminar', @cafeteria, method: :delete, data: { confirm: 'Estás seguro?' } %>
+    </span>
   </div>
   <div class="panel-body">
     <%= render 'form', cafeteria: @cafeteria %>

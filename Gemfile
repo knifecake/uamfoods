@@ -41,6 +41,7 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'select2-rails'
+gem 'deep_cloneable', '~> 2.2.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

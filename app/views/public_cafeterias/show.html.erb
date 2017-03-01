@@ -14,14 +14,20 @@
         <%= link_to 'editar', edit_cafeteria_menu_path(@cafeteria, m) if current_admin %>
         <br>
         <div class="dish-detail">
-          <b>de primero:</b>
-          <%= render 'menu_detail', dish_menus: m.dish_menus.first_courses %>
+          <% if m.dish_menus.first_courses.any? %>
+            <b>de primero:</b>
+            <%= render 'menu_detail', dish_menus: m.dish_menus.first_courses %>
+          <% end %>
 
-          <b>de segundo:</b>
-          <%= render 'menu_detail', dish_menus: m.dish_menus.second_courses %>
+          <% if m.dish_menus.second_courses.any? %>
+            <b>de segundo:</b>
+            <%= render 'menu_detail', dish_menus: m.dish_menus.second_courses %>
+          <% end %>
 
-          <b>de postre:</b>
-          <%= render 'menu_detail', dish_menus: m.dish_menus.desserts %>
+          <% if m.dish_menus.desserts.any? %>
+            <b>de postre:</b>
+            <%= render 'menu_detail', dish_menus: m.dish_menus.desserts %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -31,7 +37,7 @@
 <% content_for :sidebar do %>
   <h2><%= @cafeteria.name %></h2>
   <img style="margin-bottom: 1rem;" src="<%= @cafeteria.image_url %>" class="img-thumbnail">
-  <% unless @cafeteria.needs_mentor %>
+  <% unless @cafeteria.last_contribution_date > 1.week.ago %>
     <p class="alert alert-warning">Esta cafetería no tiene a nadie que nos mande los menús según se publican. ¡Ese podrías ser tú! <%= link_to 'Escríbenos', 'mailto:eliashernandis@gmail.com' %> con una foto del menú semanal y lo añadiremos.</p>
   <% end %>
   <p>

@@ -2,8 +2,17 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :served_at, as: :string %>
-    <%= f.input :meal, collection: ['comida', 'cena'], selected: 'comida' %>
+    <%= f.input :served_at, as: :string, hint: "si lo dejas en blanco ponemos la fecha de hoy" %>
+    <%= f.input :meal, collection: ['comida', 'cena'], include_blank: false %>
+    <%= @menu.meal %>
+    <% unless menu.persisted? %>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="menu[copy_from]">Copiar desde...</label>
+      <div class="col-sm-9">
+        <%= f.input :copy_from, collection: ["no copiar", "el día anterior", "la semana anterior"], as: :radio_buttons, checked: 'no copiar', item_label_class: 'radio-inline', item_wrapper_tag: false, label: false, wrapper: false, hint: "el nuevo menú será una copia del menu un día/semana anterior a la fecha que hayas introducido" %>
+      </div>
+    </div>
+    <% end %>
   </div>
 
 
